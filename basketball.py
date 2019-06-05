@@ -28,14 +28,22 @@ def game():
     gsw = Teams(team1, 4)
     tor = Teams(team2, 4)
 
-    for i in range(12):
-        t1 = th.Thread(gsw.score_rand())
-        t2 = th.Thread(tor.score_rand())
+    for j in range(4):
+        for i in range(12):
+            t1 = th.Thread(gsw.score_rand())
+            t2 = th.Thread(tor.score_rand())
 
     print ("Golden State Score", gsw.score_summary())
-    print ("Toronto Summary", tor.score_summary())
+    print ("Toronto Score", tor.score_summary())
+
+    if gsw.score_summary() > tor.score_summary():
+        print ("GSW wins!")
+    
+    else:
+        print ("TOR wins!")
 
     print (gsw.players)
     print (tor.players)
 
-game()
+if __name__ == "__main__":
+    game()
