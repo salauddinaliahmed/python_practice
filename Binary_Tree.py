@@ -41,7 +41,34 @@ class BinaryTree(Tree_T.Tree):
     # We are using position class to find the position of nodes (as object references)
     # We are overriding the position class while inheriting it?
 
-    # Doubt
+    # Redefining position.
     class Position(BinaryTree.Position):
 
+        def __init__(self, container, node):
+            self._container = container
+            self._node = node
+
+        def element(self):
+            return self._node._element
+
+        def __eq__(self, other):
+            return type(other) is type(self) and other._node is self
+        
+    #Validating the node in the tree.
+    def _validate(self, p):
+        if not isinstance(p, self.Position):
+            raise TypeError("p is not proper type Position")
+        if p._container is not self:
+            raise TypeError("P does not belong to this container")
+        if p._node._parent is p._node:
+            raise ValueError("p is no longer valid")
+        return p._node
+
+    def _make_position(self, p):
+        return self.Position(self, p) if p is not None else None
+
+    # Tree constructor.
+    def __init__(self):
+        self._root = None
+        self._size = 0
 
