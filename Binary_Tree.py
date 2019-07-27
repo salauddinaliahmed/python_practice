@@ -234,6 +234,25 @@ class LinkedBinaryTree(BinaryTree):
             t2._root = None
             t2._size = 0
 
+    # Inorder traversal
+    def inorder(self):
+        if not self.is_empty():
+            for p in self._subtree_inorder(self.root()):
+                yield p
+    
+    def _subtree_inorder(self, p):
+        if self.left(p) is not None:
+            for each in self._subtree_inorder(self.left(p)):
+                yield each
+        # No more left.
+        yield p
+        if self.right(p) is not None:
+            for each in  self._subtree_inorder(self.right(p)):
+                yield each
+
+    # Overwriting positions. 
+    def positions(self):
+        return self.inorder()
 
 # Running the class.
 x = LinkedBinaryTree()
@@ -264,8 +283,14 @@ print (x._size)
 #x._attach(j, t1, t2)
 #print (x._size)
 
+"""
 for a in x.postorder():
     print (a.element())
+"""
 #When i did x.num_children(p->which pointed to instance of T2)
 #It gave me the error P does not belong to this container. Since p was the instance of position method for sure, 
 # But was of the instance of T2. hence we needed that check
+
+a = x.positions()
+for b in a:
+    print (b.element())
