@@ -18,4 +18,24 @@ def fact(n):
 
 print (fact(5)) 
 
+
+#GCD recursion.
+#Needed euclidean proof
+"""
+a, b
+Say, a > b
+formula => a = b * (some number) + remainder
+next iteration. a = b
+                b = remainder
+"""
+
+def gcd(num1,num2):
+    a = max(num1, num2)
+    b = min(num1, num2)
+    if b == 0:
+        return a
+    else:
+        return gcd(b,a%b)
+
+print (gcd(10,15))
  
