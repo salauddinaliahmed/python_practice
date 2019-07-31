@@ -39,3 +39,16 @@ def gcd(num1,num2):
 
 print (gcd(10,15))
  
+
+"""This an example of string palindrome"""
+
+def stringpalin(stro):
+    stro = stro.split(" ")
+    lent = len(stro)
+    if lent == 1:
+        return stro[0]
+    else:
+        A = ' '.join(stro[0:lent-1])
+        return stro[-1]+ " " + stringpalin(' '.join(stro[0:lent-1]))
+
+print (stringpalin("Can it print a long sentence in reverse? Lets put it to test"))
