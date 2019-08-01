@@ -52,3 +52,28 @@ def stringpalin(stro):
         return stro[-1]+ " " + stringpalin(' '.join(stro[0:lent-1]))
 
 print (stringpalin("Can it print a long sentence in reverse? Lets put it to test"))
+
+
+
+"""
+    The main idea behind recursion is that you need to boil down to one or more base cases and build your way up. 
+    In the solution provided on stack overflow(Brilliant answer by ssm). he was checking each element of includes list with the word. Thw word
+    remained of the same length but the search word changed.
+
+    SO, think in terms of both directs. Can we change the input or can we manipulate the condition such that i can 
+    test the whole case. 
+    
+    Lesson learnt.
+"""
+
+def checkstring(word, includes):
+    if includes == '':
+        return includes in word
+    else:
+        #Check from the first word and keep adding the result. 
+        #The base case is always true.
+        #In the recursive portion, you are doing most of your logical operations.
+        return (includes[0] in word) and checkstring(word,includes[1:])
+
+print (checkstring("Whiteleaf", "elf"))
+
