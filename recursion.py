@@ -77,3 +77,28 @@ def checkstring(word, includes):
 
 print (checkstring("Whiteleaf", "elf"))
 
+
+# another recursion problem dealing with reversing string with O(n/2) time.
+class Solution:
+    def reverseString(self, s):
+        """
+        Do not return anything, modify s in-place instead.
+        """
+        start = 0
+        stop = len(s)
+        
+        
+        def helper(start, stop):
+            if start == stop:
+                s[start] = s[stop]
+            elif stop-start >= 1:
+                s[start], s[stop] = s[stop], s[start]
+                return helper(start+1, stop-1)
+            
+        helper(start,stop-1)
+
+x = Solution()
+s = ["A"," ","m","a","n",","," ","a"," ","p","l","a","n",","," ","a"," ","c","a","n","a","l",":"," ","P","a","n","a","m","a"]
+x.reverseString(s)
+print (s)
+
